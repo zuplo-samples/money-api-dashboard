@@ -41,9 +41,9 @@ export const useUser = () => {
       });
 
       if (subscription.error) {
-        // TODO: better handling
         setIsLoading(false);
-        throw new Error("Could not get subscription");
+        setIsSubscribed(false)
+        return;
       }
 
       const usage = await getUsage({
@@ -53,7 +53,7 @@ export const useUser = () => {
       if (usage.error) {
         // TODO: better handling
         setIsLoading(false);
-        throw new Error(usage.error);
+        throw new Error("could not retrieve usage", usage.error);
       }
 
       setAccessToken(token);
