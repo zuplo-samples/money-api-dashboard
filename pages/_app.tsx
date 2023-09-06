@@ -6,8 +6,7 @@ import { getRequiredEnvVar } from "@/lib/utils";
 import { Auth0Provider } from "@auth0/auth0-react";
 import type { AppProps } from "next/app";
 import {
-  JetBrains_Mono as FontMono,
-  Inter as FontSans,
+  Inter as FontSans
 } from "next/font/google";
 
 export const fontSans = FontSans({
