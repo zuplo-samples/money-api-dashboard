@@ -41,6 +41,7 @@ export const useUser = () => {
       });
 
       if (subscription.error) {
+        setAccessToken(token);
         setIsLoading(false);
         setIsSubscribed(false)
         return;
