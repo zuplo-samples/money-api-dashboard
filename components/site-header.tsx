@@ -1,11 +1,10 @@
 import { ThemeToggle } from "@/components/theme-toggle";
-import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { siteConfig } from "@/config/site";
-import { Session } from "next-auth";
 import Link from "next/link";
 import UserDropdown from "./user-dropdown";
 import { useAuth0 } from "@auth0/auth0-react";
+import { buttonVariants } from "./ui/button";
 
 export function SiteHeader() {
   const { isAuthenticated } = useAuth0();

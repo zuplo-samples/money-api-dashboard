@@ -1,7 +1,6 @@
 import { Icons } from "@/components/ui/icons";
 import Modal from "@/components/ui/modal";
 import { useAuth0 } from "@auth0/auth0-react";
-import { signIn } from "next-auth/react";
 import {
   Dispatch,
   SetStateAction,
