@@ -29,7 +29,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center space-y-10">
       <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
         <div className="items-center">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl pb-8">
@@ -38,15 +38,15 @@ export default function DashboardPage() {
           <div className="my-10">
             <KeyManager apiUrl={zuploUrl} accessToken={auth0AccessToken} />
           </div>
-          <p className="pt-10 max-w-[700px] text-lg  sm:text-xl">
-            Make an authenticated API request:
-          </p>
-          <code>
-            curl &apos;{zuploUrl}/todos&apos; \ <br />
-            --header &apos;Authorization: Bearer YOUR_KEY_HERE&apos;
-          </code>
         </div>
       </section>
+      <p className="pt-10 max-w-[700px] text-lg  sm:text-xl">
+        Make an authenticated API request:
+      </p>
+      <code>
+        curl &apos;{zuploUrl}/todos&apos; \ <br />
+        --header &apos;Authorization: Bearer YOUR_KEY_HERE&apos;
+      </code>
       <CurrentSubscriptionUsage usage={usage} />
     </div>
   );

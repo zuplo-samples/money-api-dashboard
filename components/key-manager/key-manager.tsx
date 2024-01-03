@@ -86,7 +86,7 @@ export function KeyManager({ apiUrl, accessToken }: Props) {
   }, [deleteConsumer]);
 
   return (
-    <div>
+    <div className="space-y-10 max-w-2xl">
       <ApiKeyManager
         provider={provider}
         menuItems={menuItems}
