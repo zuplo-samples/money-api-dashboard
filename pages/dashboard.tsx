@@ -1,3 +1,4 @@
+import { CodeSnippet } from "@/components/code-snippet";
 import { CurrentSubscriptionUsage } from "@/components/current-subscription";
 import FullScreenLoading from "@/components/full-screen-loading";
 import { KeyManager } from "@/components/key-manager/key-manager";
@@ -43,10 +44,16 @@ export default function DashboardPage() {
       <p className="pt-10 max-w-[700px] text-lg  sm:text-xl">
         Make an authenticated API request:
       </p>
-      <code>
+      <CodeSnippet
+        onClickCopy={() => {
+          navigator.clipboard.writeText(
+            `curl '${zuploUrl}/todos' --header 'Authorization: Bearer YOUR_KEY_HERE'`
+          );
+        }}
+      >
         curl &apos;{zuploUrl}/todos&apos; \ <br />
         --header &apos;Authorization: Bearer YOUR_KEY_HERE&apos;
-      </code>
+      </CodeSnippet>
       <CurrentSubscriptionUsage usage={usage} />
     </div>
   );
