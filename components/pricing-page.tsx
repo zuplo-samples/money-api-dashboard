@@ -14,7 +14,7 @@ type StripeProduct = {
   currency: string;
 };
 
-export const StripePricingTable = () => {
+export const PricingPage = () => {
   const [stripeProducts, setStripeProducts] = useState<StripeProduct[] | null>(
     null
   );
@@ -74,33 +74,15 @@ export const StripePricingTable = () => {
   };
 
   return (
-    <>
-      <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+    <div className="flex flex-col items-center justify-center space-y-20">
+      <section>
         <div className="flex max-w-[980px] flex-col items-start gap-2">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
             Subscribe to your API here.
           </h1>
           <p className="text-muted-foreground max-w-[700px] text-lg  sm:text-xl">
-            Zuplo generates a{" "}
-            <Link
-              className="text-blue-500"
-              href="https://zuplo.com/docs/articles/developer-portal"
-            >
-              Developer Portal
-            </Link>{" "}
-            where your customers can explore your API's documentation and create
-            API Keys using Zuplo's{" "}
-            <Link
-              className="text-blue-500"
-              href="https://zuplo.com/docs/articles/api-key-management"
-            >
-              API Key Management
-            </Link>
-            .
-          </p>
-          <p className="text-muted-foreground max-w-[700px] text-lg  sm:text-xl">
             On checkout an account will be created for your customers on your
-            API's own Developer Portal.
+            API.
           </p>
           <p className="text-muted-foreground max-w-[700px] text-lg  sm:text-xl">
             You can use{" "}
@@ -116,7 +98,7 @@ export const StripePricingTable = () => {
           </p>
         </div>
       </section>
-      <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+      <section>
         <div className="flex justify-center">
           {stripeProducts === null ? (
             <div>Loading products...</div>
@@ -157,6 +139,6 @@ export const StripePricingTable = () => {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 };

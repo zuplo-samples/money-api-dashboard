@@ -1,6 +1,6 @@
 import FullScreenLoading from "@/components/full-screen-loading";
 import { SignInPage } from "@/components/sign-in-page";
-import { StripePricingTable } from "@/components/stripe-pricing-table";
+import { PricingPage } from "@/components/pricing-page";
 import { useUser } from "@/lib/hooks/use-user";
 import { useRouter } from "next/router";
 import Script from "next/script";
@@ -31,7 +31,7 @@ export default function IndexPage() {
     <>
       <Script src="https://js.stripe.com/v3/pricing-table.js" />
 
-      {isAuthenticated ? <StripePricingTable /> : <SignInPage />}
+      {isAuthenticated ? <PricingPage /> : <SignInPage />}
     </>
   );
 }
