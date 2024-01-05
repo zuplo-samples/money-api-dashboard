@@ -1,4 +1,4 @@
-import { getSubscription, getUsage } from "../get-subscription";
+import { getUsage, getSubscription } from "../get-subscription";
 import { getRequiredEnvVar } from "../utils";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";

@@ -5,9 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { getRequiredEnvVar } from "@/lib/utils";
 import { Auth0Provider } from "@auth0/auth0-react";
 import type { AppProps } from "next/app";
-import {
-  Inter as FontSans
-} from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -35,12 +33,11 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
     >
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <main className={`relative flex min-h-screen flex-col ${fontSans.className}`}>
+        <main
+          className={`relative flex mx-auto max-w-xl md:max-w-2xl lg:max-w-5xl min-h-screen flex-col ${fontSans.className}`}
+        >
           <SiteHeader />
-
-          <div className="flex-1 bg-background min-h-screen font-sans antialiased">
-            <Component {...pageProps} />
-          </div>
+          <Component {...pageProps} />
         </main>
         <TailwindIndicator />
       </ThemeProvider>

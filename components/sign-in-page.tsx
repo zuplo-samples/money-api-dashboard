@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { SignInButton } from "./sign-in-button";
 import Link from "next/link";
 
@@ -9,7 +10,7 @@ export const SignInPage = () => {
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
             Money API: Where APIs meet 💸
           </h1>
-          <h2 className="text-gray-700 max-w-[700px] text-lg  sm:text-xl">
+          <h2 className={cn("max-w-[700px] text-lg  sm:text-xl")}>
             Money API is an Open Source example of how to create a monetizable
             API using <Link className="text-blue-500" href="https://vercel.com">Vercel</Link>,{" "}
             <Link className="text-blue-500" href="https://stripe.com">Stripe</Link> and{" "}

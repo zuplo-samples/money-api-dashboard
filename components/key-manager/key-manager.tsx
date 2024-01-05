@@ -6,6 +6,7 @@ import ApiKeyManager, {
 } from "@zuplo/react-api-key-manager";
 import { useTheme } from "next-themes";
 import { useCallback, useMemo, useState } from "react";
+import { Button } from "../ui/button";
 
 interface Props {
   apiUrl: string;
@@ -86,30 +87,32 @@ export function KeyManager({ apiUrl, accessToken }: Props) {
   }, [deleteConsumer]);
 
   return (
-    <div className="space-y-10 max-w-2xl">
+    <div>
       <ApiKeyManager
         provider={provider}
         menuItems={menuItems}
         showIsLoading={showIsLoading}
         theme={theme === "dark" ? "dark" : "light"}
       />
-      <button
-        disabled={isCreating}
-        onClick={() => setShowCreateAPIKeyModal(true)}
-        className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-lg flex flex-row items-center"
-      >
-        {isCreating ? (
-          <>
-            <Icons.loadingSpinner />
-            Creating...
-          </>
-        ) : (
-          <>
-            <CreateAPIKeyModal createConsumer={createConsumer} />
-            <>Create new API Key</>
-          </>
-        )}
-      </button>
+      <div className="flex justify-end">
+        <Button
+          disabled={isCreating}
+          onClick={() => setShowCreateAPIKeyModal(true)}
+          variant={isCreating ? "disabled" : "default"}
+        >
+          {isCreating ? (
+            <>
+              <Icons.loadingSpinner />
+              Creating...
+            </>
+          ) : (
+            <>
+              <CreateAPIKeyModal createConsumer={createConsumer} />
+              <>Create new API Key</>
+            </>
+          )}
+        </Button>
+      </div>
     </div>
   );
 }

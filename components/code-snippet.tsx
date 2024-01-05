@@ -25,9 +25,9 @@ export function CodeSnippet({
   return (
     <Card
       className={cn(
-        "flex",
+        "flex justify-between",
         theme === "dark"
-          ? "bg-[#2A2F45] text-white border-none"
+          ? "bg-secondary/50 text-white border-none"
           : "bg-slate-50 text-black"
       )}
     >
