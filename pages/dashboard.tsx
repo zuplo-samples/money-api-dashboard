@@ -3,7 +3,7 @@ import FullScreenLoading from "@/components/full-screen-loading";
 import { KeyManager } from "@/components/key-manager/key-manager";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { useUser } from "@/lib/hooks/use-is-subscribed";
+import { useUser } from "@/lib/hooks/use-user";
 import { cn, getRequiredEnvVar, getURL } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";

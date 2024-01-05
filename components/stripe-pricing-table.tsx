@@ -1,4 +1,4 @@
-import { useUser } from "@/lib/hooks/use-is-subscribed";
+import { useUser } from "@/lib/hooks/use-user";
 import { getRequiredEnvVar, getURL } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
