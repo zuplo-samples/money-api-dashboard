@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import FullScreenLoading from "./full-screen-loading";
+import FullScreenError from "./full-screen-error";
 
 type StripeProduct = {
   id: string;
@@ -21,6 +23,7 @@ export const PricingPage = () => {
   const router = useRouter();
   const { auth0AccessToken: accessToken } = useUser();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -38,8 +41,9 @@ export const PricingPage = () => {
       );
 
       if (!res.ok) {
-        console.error("Error fetching products: ", await res.text());
-        throw new Error("Error fetching products.");
+        setIsLoading(false);
+        setErrorMessage(`Error fetching products: ${await res.text()}`);
+        return;
       }
 
       const products = await res.json();
@@ -63,15 +67,22 @@ export const PricingPage = () => {
     );
 
     if (!res.ok) {
-      // TODO: Handle error
-      console.error("Error creating checkout session: ", await res.text());
+      setErrorMessage(`Error creating checkout session: ${await res.text()}`);
       setIsLoading(false);
-      throw new Error("Error creating checkout session.");
+      return;
     }
 
     const checkoutSession = await res.json();
     return router.replace(checkoutSession.url);
   };
+
+  if (isLoading) {
+    return <FullScreenLoading />;
+  }
+
+  if (errorMessage) {
+    return <FullScreenError message={errorMessage} />;
+  }
 
   return (
     <div className="flex flex-col items-center justify-center space-y-20">
@@ -123,8 +134,7 @@ export const PricingPage = () => {
                       </span>
                     </div>
                     <Button
-                      variant={isLoading ? "disabled" : "default"}
-                      disabled={isLoading}
+                      variant={"default"}
                       onClick={async (e) => {
                         e.preventDefault();
                         await getAndRedirectToCheckout(product.priceId);

@@ -26,6 +26,7 @@ export const PlanCard = ({
   const { theme } = useTheme();
   const router = useRouter();
   const zuploUrl = getRequiredEnvVar("NEXT_PUBLIC_API_URL");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const createCustomerPortalSession = async () => {
     setLoadingCustomerPortal(true);
@@ -41,11 +42,10 @@ export const PlanCard = ({
 
     if (!response.ok) {
       setLoadingCustomerPortal(false);
-      console.error(
-        "Error creating customer portal session: ",
-        await response.text()
+      setErrorMessage(
+        `Error creating customer portal session: ${await response.text()}`
       );
-      throw new Error("Error creating customer portal session.");
+      return;
     }
 
     const { redirect_url } = await response.json();
@@ -58,13 +58,17 @@ export const PlanCard = ({
       <CardHeader>
         <CardTitle>Your plan</CardTitle>
       </CardHeader>
+      {errorMessage && (
+        <div className="relative overflow-auto bg-red-50 border-l-4 border-red-500 text-red-700 p-4">
+          <p className="font-bold">Error</p>
+          <p >{errorMessage}</p>
+        </div>
+      )}
       <CardContent>
         <table
           className={cn(
             "w-full border-separate border-2 rounded-md p-3",
-            theme === "dark"
-              ? "border-slate-500"
-              : "bg-slate-50 text-black"
+            theme === "dark" ? "border-slate-500" : "bg-slate-50 text-black"
           )}
         >
           <tbody className="justify-between pl-0">

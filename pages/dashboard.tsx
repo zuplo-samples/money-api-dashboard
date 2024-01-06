@@ -1,5 +1,6 @@
+import FullScreenError from "@/components/full-screen-error";
 import FullScreenLoading from "@/components/full-screen-loading";
-import { KeyManager } from "@/components/key-manager/key-manager";
+import { KeyManagerCard } from "@/components/key-manager/key-manager";
 import { PlanCard } from "@/components/plan-card";
 import { TryAPICard } from "@/components/try-api-card";
 import { useUser } from "@/lib/hooks/use-user";
@@ -7,8 +8,14 @@ import { getRequiredEnvVar } from "@/lib/utils";
 import { useRouter } from "next/router";
 
 export default function DashboardPage() {
-  const { isLoading, isSubscribed, subscription, usage, auth0AccessToken } =
-    useUser();
+  const {
+    isLoading,
+    isSubscribed,
+    subscription,
+    usage,
+    auth0AccessToken,
+    errorMessage,
+  } = useUser();
   const router = useRouter();
   const apiUrl = getRequiredEnvVar("NEXT_PUBLIC_API_URL");
 
@@ -22,11 +29,7 @@ export default function DashboardPage() {
   }
 
   if (!subscription || !usage || !auth0AccessToken) {
-    return (
-      <div>
-        <p>Something went wrong</p>
-      </div>
-    );
+    return <FullScreenError message={errorMessage || "Something went wrong"} />;
   }
 
   return (
@@ -35,7 +38,10 @@ export default function DashboardPage() {
         To use the API, use the API Key manager below.
       </h1>
       <div className="w-full max-w-3xl space-y-10">
-        <KeyManager apiUrl={apiUrl + "/v1"} accessToken={auth0AccessToken} />
+        <KeyManagerCard
+          apiUrl={apiUrl + "/v1"}
+          accessToken={auth0AccessToken}
+        />
         <TryAPICard />
         <PlanCard
           subscription={subscription}

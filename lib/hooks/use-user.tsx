@@ -17,6 +17,7 @@ export const useUser = () => {
   const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
   const [usage, setUsage] = useState<UserUsage | null>(null);
   const [subscription, setSubscription] = useState<any | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (isAuth0Loading) {
@@ -41,9 +42,10 @@ export const useUser = () => {
       });
 
       if (subscription.error) {
+        // If the user is not subscribed, we don't want to show an error
         setAccessToken(token);
         setIsLoading(false);
-        setIsSubscribed(false)
+        setIsSubscribed(false);
         return;
       }
 
@@ -52,9 +54,8 @@ export const useUser = () => {
       });
 
       if (usage.error) {
-        // TODO: better handling
+        setErrorMessage(usage.error || "Could not retrieve usage.");
         setIsLoading(false);
-        throw new Error("could not retrieve usage", usage.error);
       }
 
       setAccessToken(token);
@@ -74,5 +75,6 @@ export const useUser = () => {
     isSubscribed,
     subscription,
     usage,
+    errorMessage,
   };
 };
