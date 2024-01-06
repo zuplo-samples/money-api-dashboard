@@ -10,9 +10,9 @@ export function SiteHeader() {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <header className="sticky top-0 z-40 w-full mb-10 bg-background">
+    <header className="sticky top-0 z-40 w-full mt-5 mb-10 bg-background">
       <div className="flex h-16 items-center space-x-4">
-        <div className="flex gap-6 md:gap-10">
+        <div className="flex gap-1">
           <Link href="/" className="hidden items-center space-x-2 md:flex">
             <span className="hidden font-bold sm:inline-block">
               {siteConfig.name}

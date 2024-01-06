@@ -39,8 +39,8 @@ export default function UserDropdown() {
             user?.picture ||
             `https://avatars.dicebear.com/api/micah/${user?.email}.svg`
           }
-          width={40}
-          height={40}
+          width={35}
+          height={35}
           className="rounded-full"
         />
       </Button>
