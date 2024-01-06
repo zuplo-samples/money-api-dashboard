@@ -27,7 +27,7 @@ export function CodeSnippet({
       className={cn(
         "flex justify-between",
         theme === "dark"
-          ? "bg-secondary/50 text-white border-none"
+          ? "bg-black text-white border-none"
           : "bg-slate-50 text-black"
       )}
     >

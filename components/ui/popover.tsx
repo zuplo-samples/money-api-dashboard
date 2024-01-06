@@ -3,7 +3,7 @@ import useWindowSize from "@/lib/hooks/use-window-size";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { Dispatch, SetStateAction, ReactNode, useRef } from "react";
 
-export default function Popover({
+export function Popover({
   children,
   content,
   align = "center",

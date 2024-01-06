@@ -38,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
         >
           <SiteHeader />
           <Component {...pageProps} />
+          <footer className="mt-10"/>
         </main>
         <TailwindIndicator />
       </ThemeProvider>
