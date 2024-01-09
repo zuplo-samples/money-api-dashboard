@@ -1,23 +1,5 @@
-# next-template
+# Money API Dashboard
 
-A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
+This repository is meant to be used as a template for creating a dashboard for the Money API sample. Follow the instruction in the main repo to get the API and the dashboard up and running: https://github.com/zuplo-samples/money-api
 
-## Usage
-
-```bash
-npx create-next-app -e https://github.com/shadcn/next-template
-```
-
-## Features
-
-- Radix UI Primitives
-- Tailwind CSS
-- Fonts with `next/font`
-- Icons from [Lucide](https://lucide.dev)
-- Dark mode with `next-themes`
-- Automatic import sorting with `@ianvs/prettier-plugin-sort-imports`
-- Tailwind CSS class sorting, merging and linting.
-
-## License
-
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+![Money API Dashboard](https://cdn.zuplo.com/assets/66a05594-b23f-490c-b89d-ee2ef60a8a73.png)
