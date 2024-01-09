@@ -47,6 +47,13 @@ export const PricingPage = () => {
       }
 
       const products = await res.json();
+
+      if (products.length === 0) {
+        setIsLoading(false);
+        setErrorMessage("No products found.");
+        return;
+      }
+      
       setStripeProducts(products);
     };
     fetchProducts();
