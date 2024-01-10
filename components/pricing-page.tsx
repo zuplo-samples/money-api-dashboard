@@ -1,5 +1,5 @@
 import { useUser } from "@/lib/hooks/use-user";
-import { getRequiredEnvVar, getURL } from "@/lib/utils";
+import { cn, getRequiredEnvVar, getURL } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -53,7 +53,7 @@ export const PricingPage = () => {
         setErrorMessage("No products found.");
         return;
       }
-      
+
       setStripeProducts(products);
     };
     fetchProducts();
@@ -121,7 +121,11 @@ export const PricingPage = () => {
           {stripeProducts === null ? (
             <div>Loading products...</div>
           ) : (
-            <form>
+            <form
+              className={cn(
+                stripeProducts.length > 1 && "grid grid-cols-3 gap-10"
+              )}
+            >
               {stripeProducts.map((product) => {
                 return (
                   <div
